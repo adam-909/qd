@@ -1,0 +1,59 @@
+ORBIT: Probabilistic Computing Platform
+========================================
+
+Welcome to the ORBIT platform documentation. This comprehensive guide covers the API reference,
+user guides, and examples for Quantum Dice's probabilistic computing platform.
+
+.. note::
+
+   **Quick Start:** For installation, setup, and basic usage, see the
+   `README.md <https://github.com/Quantum-Dice/orbit>`_ in the repository.
+
+What is ORBIT?
+--------------
+
+ORBIT is a comprehensive platform for probabilistic computing that provides:
+
+* **Simulation Environment** - Model and analyze probabilistic computing systems
+* **Hardware Emulation** - Test algorithms before hardware deployment
+* **Hardware Interface** - Connect with physical ORBIT devices
+* **Research Tools** - Explore novel probabilistic computing approaches
+
+This documentation focuses on detailed usage, API references, and advanced examples.
+For project setup and installation instructions, please refer to the README.
+
+Documentation Structure
+=======================
+
+User Guide
+----------
+
+Learn how to use ORBIT effectively with detailed guides and practical examples.
+
+.. toctree::
+   :maxdepth: 2
+
+   simulator
+   examples
+
+API Reference
+-------------
+
+Complete API documentation with detailed class and function references.
+
+.. toctree::
+   :maxdepth: 2
+
+   api/orbit
+   api/simulator
+   api/emulator
+   api/interface
+   api/utils
+   api/types
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

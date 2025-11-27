@@ -1,0 +1,121 @@
+Simulator API
+=============
+
+The simulator module provides components for simulating probabilistic computing models.
+
+Main Module
+-----------
+
+.. automodule:: orbit.simulator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :no-index:
+
+Components
+----------
+
+Simulator
+~~~~~~~~~
+
+.. automodule:: orbit.simulator.components.simulator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Controller
+~~~~~~~~~~
+
+.. automodule:: orbit.simulator.components.controller
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Network
+~~~~~~~
+
+.. automodule:: orbit.simulator.components.network
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Pbit
+~~~~
+
+.. automodule:: orbit.simulator.components.pbit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Replica
+~~~~~~~
+
+.. automodule:: orbit.simulator.components.replica
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Bias Calculators
+~~~~~~~~~~~~~~~~
+
+Base Bias Calculator
+^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: orbit.simulator.components.base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Ising Calculator
+^^^^^^^^^^^^^^^^
+
+.. automodule:: orbit.simulator.components.bias_calculators.ising_calculator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Models and Factory
+------------------
+
+Pydantic Models
+~~~~~~~~~~~~~~~
+
+.. automodule:: orbit.simulator.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Factory Functions
+~~~~~~~~~~~~~~~~~
+
+.. automodule:: orbit.simulator.factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Configuration and Utilities
+----------------------------
+
+Configuration Models
+~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: orbit.simulator.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Validation Utilities
+~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: orbit.simulator.validation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Logging Utilities
+~~~~~~~~~~~~~~~~~
+
+.. automodule:: orbit.utils.logging
+   :members:
+   :undoc-members:
+   :show-inheritance:

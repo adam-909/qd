@@ -1,0 +1,23 @@
+ORBIT API Reference
+===================
+
+This is the complete API reference for the ORBIT probabilistic computing platform.
+
+Main Package
+------------
+
+.. automodule:: orbit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+The ORBIT package is organized into several main components:
+
+* :doc:`simulator` - Probabilistic computing simulation components
+* :doc:`emulator` - Hardware emulation functionality
+* :doc:`interface` - Hardware interface components
+* :doc:`utils` - Utility functions and helpers
+* :doc:`types` - Type definitions and annotations

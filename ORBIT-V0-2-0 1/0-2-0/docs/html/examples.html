@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples and Tutorials &mdash; ORBIT 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ORBIT API Reference" href="api/orbit.html" />
+    <link rel="prev" title="Using the Simulator" href="simulator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ORBIT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="simulator.html">Using the Simulator</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples and Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-examples">Quick Start Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-ising-problem">Simple Ising Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-management">Configuration Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#comprehensive-examples">Comprehensive Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simulator-examples-examples-simulator-example-py">Simulator Examples (<code class="docutils literal notranslate"><span class="pre">examples/simulator_example.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-examples-examples-pydantic-configuration-py">Configuration Examples (<code class="docutils literal notranslate"><span class="pre">examples/pydantic_configuration.py</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging-examples-examples-logging-example-py">Logging Examples (<code class="docutils literal notranslate"><span class="pre">examples/logging_example.py</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-usage-patterns">Advanced Usage Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging-and-output-control">Logging and Output Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-sweeps">Temperature Sweeps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-problem-analysis">Multi-Problem Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#results-analysis">Results Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-simulation-results">Working with Simulation Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization-and-analysis">Visualization and Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-considerations">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-and-validation">Testing and Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/orbit.html">ORBIT API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/simulator.html">Simulator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/emulator.html">Emulator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/interface.html">Interface API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utils.html">Utilities API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/types.html">Type Definitions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ORBIT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Examples and Tutorials</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples-and-tutorials">
+<h1>Examples and Tutorials<a class="headerlink" href="#examples-and-tutorials" title="Link to this heading"></a></h1>
+<p>This section provides practical examples and tutorials for using the ORBIT simulator effectively.</p>
+<section id="quick-start-examples">
+<h2>Quick Start Examples<a class="headerlink" href="#quick-start-examples" title="Link to this heading"></a></h2>
+<section id="simple-ising-problem">
+<h3>Simple Ising Problem<a class="headerlink" href="#simple-ising-problem" title="Link to this heading"></a></h3>
+<p>A complete example showing how to set up and run a basic Ising optimization problem:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">orbit.simulator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sim</span>
+
+<span class="c1"># Create a simple 2-node Max-Cut problem</span>
+<span class="n">coupling_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">external_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="c1"># Create configuration using the helper function</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">beta_initial</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>  <span class="c1"># Temperature parameter</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># Run simulation</span>
+<span class="n">controller</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">Controller</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># Analyze results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Execution time: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">execution_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="n">combined_samples</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_combined_samples</span><span class="p">()</span>
+<span class="n">final_state</span> <span class="o">=</span> <span class="n">combined_samples</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Calculate energy of final state</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">final_state</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">coupling_matrix</span> <span class="o">@</span> <span class="n">final_state</span> <span class="o">-</span> <span class="n">external_field</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">final_state</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final energy: </span><span class="si">{</span><span class="n">energy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration-management">
+<h3>Configuration Management<a class="headerlink" href="#configuration-management" title="Link to this heading"></a></h3>
+<p>Working with Pydantic-based configurations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">orbit.simulator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Create configuration programmatically</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">]),</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">200</span>
+<span class="p">)</span>
+
+<span class="c1"># Save configuration to JSON</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">save_config_to_json</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;my_config.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load configuration from JSON</span>
+<span class="n">loaded_config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">load_config_from_json</span><span class="p">(</span><span class="s2">&quot;my_config.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># Validate configuration dictionary</span>
+<span class="n">config_dict</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>  <span class="c1"># Your config data</span>
+<span class="n">is_valid</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">validate_config</span><span class="p">(</span><span class="n">config_dict</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation errors:&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="comprehensive-examples">
+<h2>Comprehensive Examples<a class="headerlink" href="#comprehensive-examples" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">examples/</span></code> directory contains detailed, working examples:</p>
+<section id="simulator-examples-examples-simulator-example-py">
+<h3>Simulator Examples (<code class="docutils literal notranslate"><span class="pre">examples/simulator_example.py</span></code>)<a class="headerlink" href="#simulator-examples-examples-simulator-example-py" title="Link to this heading"></a></h3>
+<p>This comprehensive example demonstrates:</p>
+<ul class="simple">
+<li><p><strong>Simple Ising Problems</strong> - Basic 4-node Max-Cut optimization</p></li>
+<li><p><strong>Complex Optimization</strong> - Problems with external fields and temperature sweeps</p></li>
+<li><p><strong>Convergence Analysis</strong> - Statistical analysis of simulation behavior</p></li>
+<li><p><strong>Parameter Optimization</strong> - Systematic testing of β and replica parameters</p></li>
+<li><p><strong>Large-Scale Performance</strong> - Testing on 20-node problems</p></li>
+</ul>
+<p>Run the full example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/simulator_example.py
+</pre></div>
+</div>
+</section>
+<section id="configuration-examples-examples-pydantic-configuration-py">
+<h3>Configuration Examples (<code class="docutils literal notranslate"><span class="pre">examples/pydantic_configuration.py</span></code>)<a class="headerlink" href="#configuration-examples-examples-pydantic-configuration-py" title="Link to this heading"></a></h3>
+<p>Focused examples for the Pydantic configuration system:</p>
+<ul class="simple">
+<li><p>Creating configurations programmatically</p></li>
+<li><p>Loading/saving configurations to JSON</p></li>
+<li><p>Configuration validation with error handling</p></li>
+<li><p>Integration with simulation workflows</p></li>
+</ul>
+<p>Run configuration examples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/pydantic_configuration.py
+</pre></div>
+</div>
+</section>
+<section id="logging-examples-examples-logging-example-py">
+<h3>Logging Examples (<code class="docutils literal notranslate"><span class="pre">examples/logging_example.py</span></code>)<a class="headerlink" href="#logging-examples-examples-logging-example-py" title="Link to this heading"></a></h3>
+<p>Comprehensive examples for the logging system:</p>
+<ul class="simple">
+<li><p>Global logging configuration and log levels</p></li>
+<li><p>File logging with automatic timestamping</p></li>
+<li><p>Performance optimization with silent operation</p></li>
+<li><p>Multi-controller logging behavior</p></li>
+</ul>
+<p>Key features demonstrated:</p>
+<ul class="simple">
+<li><p><strong>Log Levels</strong>: INFO (progress), WARNING (minimal), ERROR (silent)</p></li>
+<li><p><strong>File Logging</strong>: Automatic timestamp and directory creation</p></li>
+<li><p><strong>Performance</strong>: Zero overhead when logging is disabled</p></li>
+<li><p><strong>Global Configuration</strong>: Set once, use everywhere</p></li>
+</ul>
+<p>Run logging examples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/logging_example.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-usage-patterns">
+<h2>Advanced Usage Patterns<a class="headerlink" href="#advanced-usage-patterns" title="Link to this heading"></a></h2>
+<section id="logging-and-output-control">
+<h3>Logging and Output Control<a class="headerlink" href="#logging-and-output-control" title="Link to this heading"></a></h3>
+<p>Control simulation output with the professional logging system:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">orbit.utils.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogLevel</span>
+
+<span class="c1"># Detailed progress logging (default)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">LogLevel</span><span class="o">.</span><span class="n">INFO</span>
+<span class="p">)</span>
+
+<span class="c1"># Silent operation for performance</span>
+<span class="n">config_silent</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">LogLevel</span><span class="o">.</span><span class="n">ERROR</span>  <span class="c1"># No progress output</span>
+<span class="p">)</span>
+
+<span class="c1"># File logging with timestamps</span>
+<span class="n">config_file</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">LogLevel</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">log_file</span><span class="o">=</span><span class="s2">&quot;experiment&quot;</span>  <span class="c1"># Creates logs/experiment_TIMESTAMP.log</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Performance benefits of proper log levels:</p>
+<ul class="simple">
+<li><p><strong>INFO level</strong>: Shows progress, good for debugging</p></li>
+<li><p><strong>ERROR level</strong>: ~8x faster execution, ideal for parameter sweeps</p></li>
+<li><p><strong>File logging</strong>: Persistent logs with automatic timestamping</p></li>
+</ul>
+</section>
+<section id="temperature-sweeps">
+<h3>Temperature Sweeps<a class="headerlink" href="#temperature-sweeps" title="Link to this heading"></a></h3>
+<p>Explore how temperature affects optimization:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test different temperatures</span>
+<span class="n">temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+<span class="n">results_by_temp</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperatures</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+        <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+        <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+        <span class="n">n_replicas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">beta_initial</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">temp</span><span class="p">,</span>  <span class="c1"># β = 1/T</span>
+        <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">)</span>
+
+    <span class="n">controller</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">Controller</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">results_by_temp</span><span class="p">[</span><span class="n">temp</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-problem-analysis">
+<h3>Multi-Problem Analysis<a class="headerlink" href="#multi-problem-analysis" title="Link to this heading"></a></h3>
+<p>Analyze convergence across different problem instances:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">convergence_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">final_energies</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+        <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+        <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+        <span class="n">n_replicas</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+        <span class="n">beta_initial</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">random_seed</span><span class="o">=</span><span class="n">run</span> <span class="o">*</span> <span class="mi">100</span>  <span class="c1"># Different seed each run</span>
+    <span class="p">)</span>
+
+    <span class="n">controller</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">Controller</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+    <span class="n">convergence_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">convergence_data</span><span class="p">[</span><span class="s1">&#39;mean_iterations&#39;</span><span class="p">])</span>
+    <span class="c1"># Calculate final energy and store...</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="results-analysis">
+<h2>Results Analysis<a class="headerlink" href="#results-analysis" title="Link to this heading"></a></h2>
+<section id="working-with-simulation-results">
+<h3>Working with Simulation Results<a class="headerlink" href="#working-with-simulation-results" title="Link to this heading"></a></h3>
+<p>The simulator returns rich <code class="docutils literal notranslate"><span class="pre">SimulationResult</span></code> objects with analysis capabilities:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run simulation</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># Basic information</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Execution time: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">execution_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of replicas: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Convergence iterations: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">convergence_data</span><span class="p">[</span><span class="s1">&#39;mean_iterations&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access sample data</span>
+<span class="n">combined_samples</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_combined_samples</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Combined samples shape: </span><span class="si">{</span><span class="n">combined_samples</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Statistical analysis</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_sample_statistics</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample mean: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample std: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualization-and-analysis">
+<h3>Visualization and Analysis<a class="headerlink" href="#visualization-and-analysis" title="Link to this heading"></a></h3>
+<p>Analyze and visualize simulation behavior:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Plot convergence over time</span>
+<span class="n">final_samples</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_combined_samples</span><span class="p">()[</span><span class="o">-</span><span class="mi">50</span><span class="p">:]</span>  <span class="c1"># Last 50 samples</span>
+<span class="n">energies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">final_samples</span><span class="p">:</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">coupling_matrix</span> <span class="o">@</span> <span class="n">sample</span>
+    <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">energies</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Energy Convergence&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h2>
+<p>Tips for optimal simulation performance:</p>
+<ul class="simple">
+<li><p><strong>Problem Size</strong>: Larger networks require more memory and computation time</p></li>
+<li><p><strong>Replica Count</strong>: More replicas improve sampling but increase execution time</p></li>
+<li><p><strong>Iterations</strong>: Balance convergence quality vs. execution time</p></li>
+<li><p><strong>Temperature (β)</strong>: Higher β (lower temperature) requires more iterations to converge</p></li>
+</ul>
+<p>Typical performance characteristics:</p>
+<ul class="simple">
+<li><p><strong>Small problems</strong> (2-4 nodes): &lt; 0.1s execution time</p></li>
+<li><p><strong>Medium problems</strong> (8-10 nodes): 0.1-1s execution time</p></li>
+<li><p><strong>Large problems</strong> (20+ nodes): 1-10s execution time</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More examples and tutorials will be added as the platform develops.
+Check the project repository for the latest examples and use cases.</p>
+</div>
+</section>
+<section id="testing-and-validation">
+<h2>Testing and Validation<a class="headerlink" href="#testing-and-validation" title="Link to this heading"></a></h2>
+<p>The project includes comprehensive tests for the simulator:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all tests</span>
+uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v
+
+<span class="c1"># Run specific test categories</span>
+uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/test_simulator_functionality.py<span class="w"> </span>-v
+uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/test_simulator_example.py<span class="w"> </span>-v
+
+<span class="c1"># Run with coverage</span>
+uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>--cov<span class="o">=</span>src<span class="w"> </span>--cov-report<span class="o">=</span>html
+</pre></div>
+</div>
+<p>Current test coverage includes:</p>
+<ul class="simple">
+<li><p><strong>Core simulator functionality</strong> (12 tests) - Basic operations and energy calculations</p></li>
+<li><p><strong>Example structure validation</strong> (7 tests) - File structure and documentation</p></li>
+<li><p><strong>Pydantic integration</strong> (11 tests) - Configuration validation and serialization</p></li>
+</ul>
+</section>
+<section id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<p><strong>IsingCalculator State Persistence</strong>: The current implementation uses class-level attributes
+that persist between instances. When running problems of different sizes sequentially, this
+can cause index out-of-bounds errors. The test suite includes workarounds for this issue.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>After working through these examples:</p>
+<ol class="arabic simple">
+<li><p>Explore the full <a class="reference internal" href="api/orbit.html"><span class="doc">ORBIT API Reference</span></a> for advanced features</p></li>
+<li><p>Review the <a class="reference internal" href="simulator.html"><span class="doc">Using the Simulator</span></a> guide for detailed component usage</p></li>
+<li><p>Run the comprehensive examples in the <code class="docutils literal notranslate"><span class="pre">examples/</span></code> directory</p></li>
+<li><p>Check the test suite for additional usage patterns</p></li>
+</ol>
+<p>For project setup and installation, refer to the README in the repository.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simulator.html" class="btn btn-neutral float-left" title="Using the Simulator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/orbit.html" class="btn btn-neutral float-right" title="ORBIT API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Quantum Dice Ltd.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

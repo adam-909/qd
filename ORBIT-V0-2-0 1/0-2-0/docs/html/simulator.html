@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using the Simulator &mdash; ORBIT 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples and Tutorials" href="examples.html" />
+    <link rel="prev" title="ORBIT: Probabilistic Computing Platform" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ORBIT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the Simulator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-components">Core Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-system">Configuration System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulator-and-controller-system">Simulator and Controller System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-architecture">Network Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bias-calculation">Bias Calculation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulation-workflow">Simulation Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging-and-output-control">Logging and Output Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-replica-execution">Multi-Replica Execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-control">Temperature Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-validation">Configuration Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-considerations">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#component-architecture">Component Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples-and-testing">Examples and Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples and Tutorials</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/orbit.html">ORBIT API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/simulator.html">Simulator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/emulator.html">Emulator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/interface.html">Interface API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/utils.html">Utilities API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/types.html">Type Definitions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ORBIT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Using the Simulator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/simulator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-simulator">
+<h1>Using the Simulator<a class="headerlink" href="#using-the-simulator" title="Link to this heading"></a></h1>
+<p>The ORBIT simulator provides a comprehensive environment for modeling probabilistic computing systems with a modern Pydantic-based configuration system. This guide covers the core concepts, components, and usage patterns.</p>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<p>The simplest way to get started is using the helper functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">orbit.simulator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sim</span>
+
+<span class="c1"># Create a 2-node Ising problem</span>
+<span class="n">coupling_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">external_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="c1"># Create model and configuration</span>
+<span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">beta_initial</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># Create simulator and run</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">Simulator</span><span class="p">(</span><span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="core-components">
+<h2>Core Components<a class="headerlink" href="#core-components" title="Link to this heading"></a></h2>
+<p>The simulator is built around several key components that work together to model probabilistic computing behavior:</p>
+<section id="configuration-system">
+<h3>Configuration System<a class="headerlink" href="#configuration-system" title="Link to this heading"></a></h3>
+<p>The simulator uses Pydantic models for type-safe, validated configuration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">orbit.simulator</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationConfig</span><span class="p">,</span> <span class="n">ControllerConfig</span><span class="p">,</span> <span class="n">ReplicaConfig</span>
+
+<span class="c1"># Configurations are automatically validated</span>
+<span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">200</span>
+<span class="p">)</span>
+
+<span class="c1"># Access configuration components</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Replicas: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">controller_config</span><span class="o">.</span><span class="n">n_replicas</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max processes: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">controller_config</span><span class="o">.</span><span class="n">max_processes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Save/load configurations</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">save_config_to_json</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;config.json&quot;</span><span class="p">)</span>
+<span class="n">loaded_config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">load_config_from_json</span><span class="p">(</span><span class="s2">&quot;config.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="simulator-and-controller-system">
+<h3>Simulator and Controller System<a class="headerlink" href="#simulator-and-controller-system" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="api/simulator.html#orbit.simulator.components.simulator.Simulator" title="orbit.simulator.components.simulator.Simulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Simulator</span></code></a> orchestrates the entire simulation workflow, while the <a class="reference internal" href="api/simulator.html#orbit.simulator.components.controller.Controller" title="orbit.simulator.components.controller.Controller"><code class="xref py py-class docutils literal notranslate"><span class="pre">Controller</span></code></a> manages execution across replicas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">orbit.simulator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Simulator</span><span class="p">,</span> <span class="n">Controller</span>
+
+<span class="c1"># Create model and configuration</span>
+<span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Initialize simulator (handles setup and logging)</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">(</span><span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># Access results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Execution time: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">execution_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterations per replica: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">total_iterations</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">combined_samples</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_combined_samples</span><span class="p">()</span>
+
+<span class="c1"># The Simulator internally uses Controller to manage replica execution</span>
+<span class="c1"># Controller parameters are configured through ControllerConfig</span>
+</pre></div>
+</div>
+</section>
+<section id="network-architecture">
+<h3>Network Architecture<a class="headerlink" href="#network-architecture" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="api/simulator.html#orbit.simulator.components.network.Network" title="orbit.simulator.components.network.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> class represents topology and connections:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Networks are automatically created from coupling matrices</span>
+<span class="c1"># For custom topologies:</span>
+<span class="n">adjacency</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">}}</span>  <span class="c1"># Fully connected 3-node</span>
+<span class="n">update_groups</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Single update group</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">adjacency</span><span class="o">=</span><span class="n">adjacency</span><span class="p">,</span>
+    <span class="n">update_groups</span><span class="o">=</span><span class="n">update_groups</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="bias-calculation">
+<h3>Bias Calculation<a class="headerlink" href="#bias-calculation" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="api/simulator.html#orbit.simulator.components.bias_calculators.ising_calculator.IsingCalculator" title="orbit.simulator.components.bias_calculators.ising_calculator.IsingCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IsingCalculator</span></code></a> handles Ising model calculations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bias calculation is automatic with Ising configurations</span>
+<span class="c1"># Energy: E = -0.5 * s^T * J * s - h^T * s</span>
+<span class="c1"># where J is coupling matrix, h is external field, s is state</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="simulation-workflow">
+<h2>Simulation Workflow<a class="headerlink" href="#simulation-workflow" title="Link to this heading"></a></h2>
+<p>A typical simulation workflow involves:</p>
+<ol class="arabic simple">
+<li><p><strong>Problem Definition</strong> - Define coupling matrix and external fields</p></li>
+<li><p><strong>Factory Creation</strong> - Use <code class="docutils literal notranslate"><span class="pre">create_ising_simulation()</span></code> helper to get model and config</p></li>
+<li><p><strong>Simulator Setup</strong> - Initialize <code class="docutils literal notranslate"><span class="pre">Simulator</span></code> with model and config</p></li>
+<li><p><strong>Execution</strong> - Run simulation with <code class="docutils literal notranslate"><span class="pre">simulator.run()</span></code></p></li>
+<li><p><strong>Analysis</strong> - Extract and analyze results</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Define problem</span>
+<span class="n">coupling_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">external_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">])</span>
+
+<span class="c1"># 2. Create model and configuration</span>
+<span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">beta_initial</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Create simulator</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">Simulator</span><span class="p">(</span><span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+<span class="c1"># 4. Execute simulation</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># 5. Analyze results</span>
+<span class="n">combined_samples</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_combined_samples</span><span class="p">()</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_sample_statistics</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Completed in </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">execution_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-features">
+<h2>Advanced Features<a class="headerlink" href="#advanced-features" title="Link to this heading"></a></h2>
+<section id="logging-and-output-control">
+<h3>Logging and Output Control<a class="headerlink" href="#logging-and-output-control" title="Link to this heading"></a></h3>
+<p>The simulator uses a professional logging system with configurable levels. Logging is configured through <code class="docutils literal notranslate"><span class="pre">SimulationConfig</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">orbit.utils.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogLevel</span>
+
+<span class="c1"># Create configurations with different log levels</span>
+<span class="n">sim_model_info</span><span class="p">,</span> <span class="n">config_info</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">LogLevel</span><span class="o">.</span><span class="n">INFO</span>  <span class="c1"># Shows progress updates</span>
+<span class="p">)</span>
+
+<span class="n">sim_model_silent</span><span class="p">,</span> <span class="n">config_silent</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">LogLevel</span><span class="o">.</span><span class="n">ERROR</span>  <span class="c1"># Silent operation</span>
+<span class="p">)</span>
+
+<span class="c1"># File logging with automatic timestamping</span>
+<span class="n">sim_model_file</span><span class="p">,</span> <span class="n">config_file</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">LogLevel</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">log_file</span><span class="o">=</span><span class="s2">&quot;simulation&quot;</span>  <span class="c1"># Creates logs/simulation_TIMESTAMP.log</span>
+<span class="p">)</span>
+
+<span class="c1"># Run simulators with different configurations</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">Simulator</span><span class="p">(</span><span class="n">sim_model_info</span><span class="p">,</span> <span class="n">config_info</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Available log levels:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LogLevel.DEBUG</span></code> - Detailed debugging information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LogLevel.INFO</span></code> - Progress updates and completion messages (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LogLevel.WARNING</span></code> - Only warnings and errors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LogLevel.ERROR</span></code> - Only errors (silent operation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LogLevel.CRITICAL</span></code> - Only critical errors</p></li>
+</ul>
+</section>
+<section id="multi-replica-execution">
+<h3>Multi-Replica Execution<a class="headerlink" href="#multi-replica-execution" title="Link to this heading"></a></h3>
+<p>The simulator automatically manages parallel replicas for improved sampling:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure multiple replicas</span>
+<span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">coupling_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">external_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># Run 10 parallel replicas</span>
+    <span class="n">max_processes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># Use up to 4 processes</span>
+    <span class="n">max_full_sweeps</span><span class="o">=</span><span class="mi">500</span>
+<span class="p">)</span>
+
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">Simulator</span><span class="p">(</span><span class="n">sim_model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Samples from </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span><span class="si">}</span><span class="s2"> replicas&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Used </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;n_processes_used&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> processes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="temperature-control">
+<h3>Temperature Control<a class="headerlink" href="#temperature-control" title="Link to this heading"></a></h3>
+<p>Control exploration vs exploitation with the temperature parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># High temperature (low β) - more exploration</span>
+<span class="n">config_hot</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">beta_initial</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Low temperature (high β) - more exploitation</span>
+<span class="n">config_cold</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">beta_initial</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration-validation">
+<h3>Configuration Validation<a class="headerlink" href="#configuration-validation" title="Link to this heading"></a></h3>
+<p>Built-in validation ensures configuration correctness:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate configuration dictionaries before creating models</span>
+<span class="n">config_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;controller_config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;n_replicas&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;max_processes&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;replica_config&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;max_full_sweeps&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="s2">&quot;beta_initial&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+            <span class="s2">&quot;beta_step_size&quot;</span><span class="p">:</span> <span class="mf">0.003</span><span class="p">,</span>
+            <span class="s2">&quot;beta_step_interval&quot;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">is_valid</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">validate_config</span><span class="p">(</span><span class="n">config_dict</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation errors:&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration is valid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h2>
+<p>Tips for optimizing simulation performance:</p>
+<p><strong>Problem Size Scaling</strong></p>
+<ul class="simple">
+<li><p><strong>Small problems</strong> (2-4 nodes): &lt; 0.1s execution time</p></li>
+<li><p><strong>Medium problems</strong> (8-10 nodes): 0.1-1s execution time</p></li>
+<li><p><strong>Large problems</strong> (20+ nodes): 1-10s execution time</p></li>
+</ul>
+<p><strong>Parameter Tuning</strong></p>
+<ul class="simple">
+<li><p><strong>Replica Count</strong>: More replicas improve sampling but increase execution time</p></li>
+<li><p><strong>Iterations</strong>: Balance convergence quality vs. execution time</p></li>
+<li><p><strong>Temperature (β)</strong>: Higher β requires more iterations but finds better solutions</p></li>
+</ul>
+<p><strong>Memory Optimization</strong></p>
+<ul class="simple">
+<li><p>Large coupling matrices consume significant memory</p></li>
+<li><p>Consider sparse representations for large, sparse problems</p></li>
+<li><p>Monitor memory usage with many replicas</p></li>
+</ul>
+<p><strong>Parallel Execution</strong></p>
+<p>The simulator automatically uses multiprocessing for replica execution:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replicas run in parallel automatically</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">create_ising_simulation</span><span class="p">(</span>
+    <span class="n">coupling_matrix</span><span class="o">=</span><span class="n">large_matrix</span><span class="p">,</span>
+    <span class="n">external_field</span><span class="o">=</span><span class="n">large_field</span><span class="p">,</span>
+    <span class="n">n_replicas</span><span class="o">=</span><span class="mi">8</span>  <span class="c1"># Will use multiple CPU cores</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="component-architecture">
+<h2>Component Architecture<a class="headerlink" href="#component-architecture" title="Link to this heading"></a></h2>
+<p>The simulator is composed of several key components that work together:</p>
+<dl class="simple">
+<dt><strong>Simulator</strong></dt><dd><p>Orchestrates the entire simulation workflow, handles logging configuration and manages the simulation lifecycle.</p>
+</dd>
+<dt><strong>Controller</strong></dt><dd><p>Manages replica execution and coordinates between replicas and the network components.</p>
+</dd>
+<dt><strong>Replica</strong></dt><dd><p>Represents a single parallel instance of the simulation, managing p-bits, bias calculations, and state sampling.</p>
+</dd>
+<dt><strong>Network</strong></dt><dd><p>Manages the topology of p-bits and update groups for efficient computation.</p>
+</dd>
+<dt><strong>Bias Calculators</strong></dt><dd><p>Abstract interface for calculating p-bit biases. Currently implements <code class="docutils literal notranslate"><span class="pre">IsingCalculator</span></code> for Ising model problems.</p>
+</dd>
+</dl>
+</section>
+<section id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<p><strong>IsingCalculator State Persistence</strong>: The current implementation uses class-level attributes
+that can cause cross-contamination between different problem sizes. This is a known issue
+being addressed in future versions.</p>
+</section>
+<section id="examples-and-testing">
+<h2>Examples and Testing<a class="headerlink" href="#examples-and-testing" title="Link to this heading"></a></h2>
+<p>For comprehensive examples, see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/simulator_example.py</span></code> - Full simulator usage examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/pydantic_configuration.py</span></code> - Configuration system examples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests/test_simulator_functionality.py</span></code> - Test suite with usage patterns</p></li>
+</ul>
+<p>Run examples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comprehensive simulator examples</span>
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/simulator_example.py
+
+<span class="c1"># Configuration examples</span>
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>examples/pydantic_configuration.py
+
+<span class="c1"># Run test suite</span>
+uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>For installation and basic setup, see the project README.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="ORBIT: Probabilistic Computing Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples and Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Quantum Dice Ltd.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

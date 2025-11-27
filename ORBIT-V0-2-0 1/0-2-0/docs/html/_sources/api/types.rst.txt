@@ -1,0 +1,20 @@
+Type Definitions
+================
+
+Type definitions and annotations used throughout the ORBIT platform.
+
+.. automodule:: orbit.simulator.types
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Type Aliases
+------------
+
+The following type aliases are defined for clarity and type safety:
+
+* ``Matrix`` - A 2D NumPy array with shape (n,n) for square matrices
+* ``Vector`` - A 1D NumPy array with shape (n,) for vectors
+* ``Bit`` - A literal type restricted to values 0 or 1
+
+These types are used throughout the simulator components to ensure type safety and clear documentation of expected data structures.

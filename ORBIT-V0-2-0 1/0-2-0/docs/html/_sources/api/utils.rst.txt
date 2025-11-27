@@ -1,0 +1,13 @@
+Utilities API
+=============
+
+The utils module provides common utilities and helper functions used across the ORBIT platform.
+
+.. automodule:: orbit.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. note::
+
+   The utilities module is currently under development. Helper functions and common utilities will be added as the platform grows.
