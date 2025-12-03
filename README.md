@@ -91,17 +91,14 @@ Maximises total flow while respecting link capacities.
 
 Balances flows across demands by maximising:
 
-[
-\sum_k \log(f_k)
-]
+$\sum_k \log(f_k)$
 
 ### **ORBIT (Ising Sampling)**
 
 Represents routing as a binary Ising system:
 
-[
-E(s) = -h^\top s
-]
+$E(s) = -h^\top s$
+
 
 This project uses a simple **external-field model** where path costs represent normalised congestion.
 
